@@ -50,7 +50,24 @@ public partial class State : Node2D
         
         for(int i=0;i<9;i++)
         {
+            if((xs & TicTacToe.GetBinary(i)) > 0)
+            {
+                rot1+=first[i];
+                rot2+=second[i];
+                rot3+=third[i];
+            }
+            if((os & TicTacToe.GetBinary(i)) > 0)
+            {
+                rot1+=first[i]*512;
+                rot2+=second[i]*512;
+                rot3+=third[i]*512;
+            }
         }
+        if(this.GetState()==state.GetState()) return true;
+        if(this.GetState()==rot1) return true;
+        if(this.GetState()==rot2) return true;
+        if(this.GetState()==rot3) return true;
+        
         return false;
     }
 

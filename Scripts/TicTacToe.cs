@@ -1,11 +1,15 @@
 using Godot;
 using System;
+using System.Linq.Expressions;
 
 public partial class TicTacToe : Node
 {
-    private Godot.Collections.Array<int> binary;
+    private static Godot.Collections.Array<int> binary;
 
-
+    public static int GetBinary(int index)
+    {
+        return binary[index];
+    }
 
     public override void _Ready()
     {
@@ -20,17 +24,18 @@ public partial class TicTacToe : Node
         {
             for(int o=0;o<512;o++)
             {
-                if(IsValid(x+o*512)) br++;
+                State state = new State(x+o*512);
+                if(IsValid(state)) br++;
             }
         }
         GD.Print(br);
     }
 
 
-    public bool IsValid(int state)
+    public bool IsValid(State state)
     {
-        int xs = state % 512;
-        int os = (state-xs) / 512;
+        int xs = state.GetState() % 512;
+        int os = (state.GetState()-xs) / 512;
         int x =0;
         int o =0;
         for(int i=0;i<9;i++)
