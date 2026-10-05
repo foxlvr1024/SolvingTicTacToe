@@ -71,7 +71,24 @@ public partial class State
     {
         return rot3;
     }
-    
+    public int GetMoves()
+    {
+        int br=0;
+        int xs = state % 512;
+        int os = (state-xs) / 512;
+        for(int i=0;i<9;i++)
+        {
+            if((xs & TicTacToe.GetBinary(i)) > 0)
+            {
+                br++;
+            }
+            if((os & TicTacToe.GetBinary(i)) > 0)
+            {
+                br++;
+            }
+        }
+        return br;
+    }
     public override bool Equals(object obj)
     {
         if(!(obj is State state)) return false;
