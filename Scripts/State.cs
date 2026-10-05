@@ -1,9 +1,13 @@
 using Godot;
 using System;
 
-public partial class State : Node2D
+public partial class State
 {
     private int state;
+    private int rot1;
+    private int rot2;
+    private int rot3;
+    
     private Godot.Collections.Array<int> previous;
     private Godot.Collections.Array<int> next;
 
@@ -12,6 +16,28 @@ public partial class State : Node2D
         this.state = state;
         previous = new Godot.Collections.Array<int>();
         next = new Godot.Collections.Array<int>();
+        int xs = state % 512;
+        int os = (state-xs) / 512;
+         rot1 =0;
+         rot2 =0;
+         rot3 =0;
+        
+        
+        for(int i=0;i<9;i++)
+        {
+            if((xs & TicTacToe.GetBinary(i)) > 0)
+            {
+                rot1+=TicTacToe.first[i];
+                rot2+=TicTacToe.second[i];
+                rot3+=TicTacToe.third[i];
+            }
+            if((os & TicTacToe.GetBinary(i)) > 0)
+            {
+                rot1+=TicTacToe.first[i]*512;
+                rot2+=TicTacToe.second[i]*512;
+                rot3+=TicTacToe.third[i]*512;
+            }
+        }
     }
 
     public void AddToPrevious(int state)
@@ -33,40 +59,28 @@ public partial class State : Node2D
     {
         return state;
     }
+    public int GetRot1()
+    {
+        return rot1;
+    }
+    public int GetRot2()
+    {
+        return rot2;
+    }
+    public int GetRot3()
+    {
+        return rot3;
+    }
+    
     public override bool Equals(object obj)
     {
         if(!(obj is State state)) return false;
 
-        int xs = state.GetState() % 512;
-        int os = (state.GetState()-xs) / 512;
-        int xs2 = state.GetState()%512;
-        int os2 = (state.GetState()-xs2) / 512;
-        int rot1 =0;
-        int rot2 =0;
-        int rot3 =0;
-        Godot.Collections.Array<int> first = [4,32,256,2,16,128,1,8,64];
-        Godot.Collections.Array<int> second = [256,128,64,32,16,8,4,2,1];
-        Godot.Collections.Array<int> third = [6,3,0,7,4,1,8,5,2];
         
-        for(int i=0;i<9;i++)
-        {
-            if((xs & TicTacToe.GetBinary(i)) > 0)
-            {
-                rot1+=first[i];
-                rot2+=second[i];
-                rot3+=third[i];
-            }
-            if((os & TicTacToe.GetBinary(i)) > 0)
-            {
-                rot1+=first[i]*512;
-                rot2+=second[i]*512;
-                rot3+=third[i]*512;
-            }
-        }
         if(this.GetState()==state.GetState()) return true;
-        if(this.GetState()==rot1) return true;
-        if(this.GetState()==rot2) return true;
-        if(this.GetState()==rot3) return true;
+        if(this.GetState()==state.GetRot1()) return true;
+        if(this.GetState()==state.GetRot2()) return true;
+        if(this.GetState()==state.GetRot3()) return true;
         
         return false;
     }

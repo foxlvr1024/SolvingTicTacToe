@@ -1,11 +1,17 @@
 using Godot;
 using System;
+using System.Collections;
+using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.ConstrainedExecution;
 
 public partial class TicTacToe : Node
 {
+    public static Godot.Collections.Array<int> first = [4,32,256,2,16,128,1,8,64];
+    public static Godot.Collections.Array<int> second = [256,128,64,32,16,8,4,2,1];
+    public static Godot.Collections.Array<int> third = [64,8,1,128,16,2,256,32,4];
     private static Godot.Collections.Array<int> binary;
-
+    private static System.Collections.ArrayList states;
     public static int GetBinary(int index)
     {
         return binary[index];
@@ -19,16 +25,25 @@ public partial class TicTacToe : Node
         {
             binary.Add(binary[i-1]*2);
         }
-        int br=0;
+        states = new System.Collections.ArrayList();
+        //int br=0;
         for(int x=0;x<512;x++)
         {
             for(int o=0;o<512;o++)
             {
                 State state = new State(x+o*512);
-                if(IsValid(state)) br++;
+                if(IsValid(state))
+                {
+                    if(!states.Contains(state))
+                    {
+                        states.Add(state);
+                        //br++;
+                        //GD.Print(br);
+                    }
+                }
             }
         }
-        GD.Print(br);
+        GD.Print(states.Count);
     }
 
 
@@ -81,5 +96,5 @@ public partial class TicTacToe : Node
 
         return false;
     }
-
+    
 }
