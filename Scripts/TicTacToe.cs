@@ -10,6 +10,11 @@ public partial class TicTacToe : Node
     public static Godot.Collections.Array<int> first = [4,32,256,2,16,128,1,8,64];
     public static Godot.Collections.Array<int> second = [256,128,64,32,16,8,4,2,1];
     public static Godot.Collections.Array<int> third = [64,8,1,128,16,2,256,32,4];
+    public static Godot.Collections.Array<int> mirror1 = [4,2,1,32,16,8,256,128,64];
+    public static Godot.Collections.Array<int> mirror2 = [64,128,256,8,16,32,1,2,4];
+    public static Godot.Collections.Array<int> mirror3 = [1,8,64,2,16,128,4,32,256];
+    public static Godot.Collections.Array<int> mirror4 = [256,32,4,128,16,2,64,8,1];
+
     private static Godot.Collections.Array<int> binary;
     private static System.Collections.ArrayList states;
     public static int GetBinary(int index)
