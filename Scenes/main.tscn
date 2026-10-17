@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dlojpxjicy6ty"]
+
+[ext_resource type="PackedScene" uid="uid://b5jqiet3knt7r" path="res://Scenes/camera_manager.tscn" id="1_jjgbg"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7u77a"]
+noise_type = 4
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jjgbg"]
+width = 3000
+height = 3000
+noise = SubResource("FastNoiseLite_7u77a")
+seamless = true
+
+[node name="Main" type="Node2D" unique_id=470328760]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1654732780]
+texture = SubResource("NoiseTexture2D_jjgbg")
+
+[node name="CameraManager" parent="." unique_id=1924170453 instance=ExtResource("1_jjgbg")]

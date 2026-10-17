@@ -4,6 +4,7 @@ using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.ConstrainedExecution;
+using System.Threading.Tasks.Dataflow;
 
 public partial class TicTacToe : Node
 {
@@ -78,7 +79,19 @@ public partial class TicTacToe : Node
             }
         }
         GD.Print(states.Count);
-        
+        int[] arr = new int[10];
+        for(int i=0;i<10;i++)
+        {
+            arr[i]=0;
+        }
+        for(int i=0;i<states.Count;i++)
+        {
+            arr[(states[i] as State).GetMoves()]++;
+        }
+        for(int i=1;i<10;i++)
+        {
+            GD.Print(i.ToString() + " => " + arr[i].ToString());
+        }
     }
 
 
