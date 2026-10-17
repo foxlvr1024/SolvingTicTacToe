@@ -17,7 +17,7 @@ public partial class TicTacToe : Node
     public static Godot.Collections.Array<int> mirror4 = [256,32,4,128,16,2,64,8,1];
 
     private static Godot.Collections.Array<int> binary;
-    private static System.Collections.ArrayList states;
+    public static System.Collections.ArrayList states;
     public static int GetBinary(int index)
     {
         return binary[index];

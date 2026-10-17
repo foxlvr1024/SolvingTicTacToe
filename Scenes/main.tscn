@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dlojpxjicy6ty"]
 
+[ext_resource type="Script" uid="uid://qoe470vv0fwc" path="res://Scripts/Main.cs" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://b5jqiet3knt7r" path="res://Scenes/camera_manager.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://h0i4auxbsjfs" path="res://Scenes/graph.tscn" id="3_jjvhh"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7u77a"]
 noise_type = 4
@@ -12,8 +14,12 @@ noise = SubResource("FastNoiseLite_7u77a")
 seamless = true
 
 [node name="Main" type="Node2D" unique_id=470328760]
+script = ExtResource("1_8gbba")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1654732780]
+visible = false
 texture = SubResource("NoiseTexture2D_jjgbg")
+
+[node name="Graph" parent="." unique_id=1048197441 instance=ExtResource("3_jjvhh")]
 
 [node name="CameraManager" parent="." unique_id=1924170453 instance=ExtResource("1_jjgbg")]
