@@ -9,3 +9,5 @@ custom_minimum_size = Vector2(15, 15)
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_i3dju")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
