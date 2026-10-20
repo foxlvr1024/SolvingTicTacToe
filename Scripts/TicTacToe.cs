@@ -52,28 +52,31 @@ public partial class TicTacToe : Node
         for(int i=0;i<states.Count;i++)
         {
             State state = states[i] as State;
-            int xs = state.GetState() % 512;
-            int os = (state.GetState()-xs) / 512;
-            for(int j=0;j<9;j++)
+            if(!HasWon(state.GetState()))
             {
-                if(!((xs & binary[j]) > 0))
+                int xs = state.GetState() % 512;
+                int os = (state.GetState()-xs) / 512;
+                for(int j=0;j<9;j++)
                 {
-                    State pom = new State(state.GetState()+binary[j]);
-                    int index = states.IndexOf(pom);
-                    if(index>-1)
+                    if(!((xs & binary[j]) > 0))
                     {
-                        (states[index] as State).AddToPrevious(state.GetState());
-                        (states[i] as State).AddToNext(state.GetState()+binary[j]);
+                        State pom = new State(state.GetState()+binary[j]);
+                        int index = states.IndexOf(pom);
+                        if(index>-1)
+                        {
+                            (states[index] as State).AddToPrevious(state.GetState());
+                            (states[i] as State).AddToNext((states[index] as State).GetState());
+                        }
                     }
-                }
-                if(!((os & binary[j]) > 0))
-                {
-                    State pom = new State(state.GetState()+binary[j]*512);
-                    int index = states.IndexOf(pom);
-                    if(index>-1)
+                    if(!((os & binary[j]) > 0))
                     {
-                        (states[index] as State).AddToPrevious(state.GetState());
-                        (states[i] as State).AddToNext(state.GetState()+binary[j]*512);
+                        State pom = new State(state.GetState()+binary[j]*512);
+                        int index = states.IndexOf(pom);
+                        if(index>-1)
+                        {
+                            (states[index] as State).AddToPrevious(state.GetState());
+                            (states[i] as State).AddToNext((states[index] as State).GetState());
+                        }
                     }
                 }
             }

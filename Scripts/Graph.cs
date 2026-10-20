@@ -21,4 +21,25 @@ public partial class Graph : HBoxContainer
 		pom.SetState(state);
 		grids[place-1].AddChild(pom);
 	}
+
+	public void AddEdge(NodeState from, NodeState to)
+	{
+		//GD.Print(from);
+		//GD.Print(to);
+		//GD.Print(from.GetState() +" "+ to.GetState());
+		
+		from.AddEdge(new Vector2(15,7.5f),to.GlobalPosition-from.GlobalPosition);
+	}
+
+	public NodeState GetNode(int place, int state)
+	{
+		//GD.Print(state);
+		//GD.Print(place);
+		foreach(NodeState node in grids[place-1].GetChildren())
+		{
+			//GD.Print(node.GetState());
+			if(node.GetState()==state) return node;
+		}
+		return null;
+	}
 }

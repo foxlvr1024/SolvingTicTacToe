@@ -16,7 +16,7 @@ public partial class State
     
     
     private Godot.Collections.Array<int> previous;
-    private Godot.Collections.Array<int> next;
+    public Godot.Collections.Array<int> next;
 
     public State(int state)
     {

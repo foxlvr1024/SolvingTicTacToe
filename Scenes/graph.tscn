@@ -2,43 +2,67 @@
 
 [ext_resource type="Script" uid="uid://b2a36ver18xn6" path="res://Scripts/Graph.cs" id="1_f7yq8"]
 
+[sub_resource type="Theme" id="Theme_f7yq8"]
+GridContainer/constants/h_separation = 30
+GridContainer/constants/v_separation = 30
+
 [node name="Graph" type="HBoxContainer" unique_id=1048197441]
 offset_right = 1130.0
 offset_bottom = 528.0
+theme = SubResource("Theme_f7yq8")
+theme_override_constants/separation = 60
 alignment = 1
 script = ExtResource("1_f7yq8")
 
 [node name="GridContainer1" type="GridContainer" parent="." unique_id=1909296425]
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
 
 [node name="GridContainer2" type="GridContainer" parent="." unique_id=1754919142]
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
 columns = 3
 
 [node name="GridContainer3" type="GridContainer" parent="." unique_id=534285073]
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
 columns = 6
 
 [node name="GridContainer4" type="GridContainer" parent="." unique_id=708404449]
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
 columns = 8
 
 [node name="GridContainer5" type="GridContainer" parent="." unique_id=198806950]
 layout_mode = 2
-columns = 16
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
+columns = 10
 
 [node name="GridContainer6" type="GridContainer" parent="." unique_id=1788770285]
 layout_mode = 2
-columns = 16
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
+columns = 12
 
 [node name="GridContainer7" type="GridContainer" parent="." unique_id=1487758160]
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
 columns = 10
 
 [node name="GridContainer8" type="GridContainer" parent="." unique_id=779456237]
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
 columns = 6
 
 [node name="GridContainer9" type="GridContainer" parent="." unique_id=1336948526]
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
 columns = 2
