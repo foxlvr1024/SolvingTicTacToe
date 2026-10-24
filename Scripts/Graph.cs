@@ -28,7 +28,7 @@ public partial class Graph : HBoxContainer
 		//GD.Print(to);
 		//GD.Print(from.GetState() +" "+ to.GetState());
 		
-		from.AddEdge(new Vector2(15,7.5f),to.GlobalPosition-from.GlobalPosition);
+		from.AddEdge(new Vector2(15,7.5f),to.GlobalPosition-from.GlobalPosition+(new Vector2(0,7.5f)));
 	}
 
 	public NodeState GetNode(int place, int state)
