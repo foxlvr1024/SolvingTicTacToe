@@ -14,14 +14,14 @@ public partial class CameraManager : Node2D
     {
         if(@event is InputEventMouseMotion motion && IsPressed)
         {
-            GlobalPosition -= motion.Relative;
+            GlobalPosition -= motion.Relative / camera.Zoom.X;
         }
         if(@event is InputEventMouseButton mouse)
         {
             if(mouse.ButtonIndex == MouseButton.Left) IsPressed = mouse.Pressed;
-            if(mouse.ButtonIndex == MouseButton.WheelUp) camera.Zoom -= new Vector2(0.01f,0.01f);
-            if(mouse.ButtonIndex == MouseButton.WheelDown) camera.Zoom += new Vector2(0.01f,0.01f);
-            
+            if(mouse.ButtonIndex == MouseButton.WheelUp && camera.Zoom.X>0.5f) camera.Zoom -= new Vector2(0.01f,0.01f);
+            if(mouse.ButtonIndex == MouseButton.WheelDown && camera.Zoom.X<3f) camera.Zoom += new Vector2(0.01f,0.01f);
+            //GD.Print(camera.Zoom);
         }
     }
 }
