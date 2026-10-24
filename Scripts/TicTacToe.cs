@@ -124,11 +124,12 @@ public partial class TicTacToe : Node
         if(x+o>9) return false;
         if(x-o>1 || x-o<0) return false;
         if(HasWon(xs) && HasWon(os)) return false;
-        
+        if(HasWon(xs) && !(x-o==1)) return false;
+        if(HasWon(os) && !(x-o==0)) return false;
         //GD.Print(state + " " + xs + " " + os + " " + x + " " + o);
         return true;
     }
-    public bool IsBinTrue(int num,int index)
+    public static bool IsBinTrue(int num,int index)
     {
         if((num & binary[index])>0) return true;
         return false;

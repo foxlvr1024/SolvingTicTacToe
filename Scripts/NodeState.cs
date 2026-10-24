@@ -39,7 +39,7 @@ public partial class NodeState : ColorRect
 			{
 				if(mb.ShiftPressed)
 				{
-					GD.Print("held");
+					View(state);
 				}
 				else
 				{
@@ -63,6 +63,26 @@ public partial class NodeState : ColorRect
 		{
 			line.ZIndex=z;
 			line.DefaultColor = z>0 ? new Color("00ff00") : new Color("000000");
+		}
+	}
+
+	public void View(int n)
+	{
+		GD.Print("======");
+		int xs = n%512;
+		int os = (n-xs)/512;
+		string s ="";
+		for(int i=0;i<9;i++)
+		{
+			if(TicTacToe.IsBinTrue(xs,i)) s+='X';
+			else if(TicTacToe.IsBinTrue(os,i)) s+='O';
+			else s+='#';
+
+			if(i==2 || i==5 || i==8)
+			{
+				GD.Print(s);
+				s="";
+			}
 		}
 	}
 }
