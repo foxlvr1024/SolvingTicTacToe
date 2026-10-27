@@ -47,4 +47,25 @@ public partial class Main : Node2D
         }
         return br;
     }
+
+    public void Highlight(Check check)
+    {
+        for(int i=9;i>0;i--)
+        {
+            for(int j=0;j<graph.GetCount(i);j++)
+            {
+                State pom = new State(graph.GetState(i,j));
+                pom = TicTacToe.states[TicTacToe.states.IndexOf(pom)] as State;
+                if(check.Pass(pom))
+                {
+                    graph.GetNode(i,pom.GetState()).SetDefaultColor(new Color("00ff00"));
+                }
+                else
+                {
+                    graph.GetNode(i,pom.GetState()).SetDefaultColor(new Color("ffffff"));
+                }
+            }
+        }
+    }
+
 }

@@ -85,4 +85,10 @@ public partial class NodeState : ColorRect
 			}
 		}
 	}
+
+	public void SetDefaultColor(Color clr)
+	{
+		this.clr=clr;
+	}
+
 }

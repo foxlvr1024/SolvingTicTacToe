@@ -42,4 +42,12 @@ public partial class Graph : HBoxContainer
 		}
 		return null;
 	}
+	public int GetState(int place,int index)
+	{
+		return grids[place].GetChild<NodeState>(index).GetState();
+	}
+	public int GetCount(int place)
+	{
+		return grids[place].GetChildCount();
+	}
 }
