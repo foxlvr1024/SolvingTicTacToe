@@ -88,7 +88,9 @@ public partial class NodeState : ColorRect
 
 	public void SetDefaultColor(Color clr)
 	{
+		if(this.clr == Color) Color = clr;
 		this.clr=clr;
+
 	}
 
 }

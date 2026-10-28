@@ -28,6 +28,7 @@ public partial class Main : Node2D
                 graph.AddEdge(graph.GetNode(pom.GetMoves(),pom.GetState()),graph.GetNode(GetMoves(pom.next[j]),pom.next[j]));
             }
         }
+        Highlight(CheckManager.GetInstance().GetAnyWinCheck());
     }
     public int GetMoves(int state)
     {

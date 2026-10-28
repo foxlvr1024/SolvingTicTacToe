@@ -44,10 +44,10 @@ public partial class Graph : HBoxContainer
 	}
 	public int GetState(int place,int index)
 	{
-		return grids[place].GetChild<NodeState>(index).GetState();
+		return grids[place-1].GetChild<NodeState>(index).GetState();
 	}
 	public int GetCount(int place)
 	{
-		return grids[place].GetChildCount();
+		return grids[place-1].GetChildCount();
 	}
 }

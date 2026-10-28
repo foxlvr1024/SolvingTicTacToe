@@ -134,7 +134,7 @@ public partial class TicTacToe : Node
         if((num & binary[index])>0) return true;
         return false;
     }
-    public bool HasWon(int state)
+    public static bool HasWon(int state)
     {
         if(IsBinTrue(state,0) && IsBinTrue(state,1) && IsBinTrue(state,2)) return true;
         if(IsBinTrue(state,3) && IsBinTrue(state,4) && IsBinTrue(state,5)) return true;
